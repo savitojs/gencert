@@ -13,11 +13,30 @@ Utility to generate easy csr and self sign certificates.
  <fqdn>                 Output files will be named as <fqdn>.key and <fqdn>.csr.
  <csr_config>           Path to file that specifies CSR information.
 ```
+## Prequesites
+- Openssl binary
+- Git
 
 ## Install
+
+### Install Openssl and Git
+For fedora systems
+
+```
+sudo dnf install openssl git
+```
+
+For RHEL/CentOS based systems
+
+```
+sudo yum install openssl git
+```
+
+### Clone `gencert`
 ```
 git clone https://gitlab.cee.redhat.com/savsingh/gencert.git
 ```
+
 ## CSR Config
 CSR config is enclosed in the project with predefined answers.
 Consider changing `config` file as per your requirements before generating cert.
