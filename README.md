@@ -14,13 +14,13 @@ Utility to generate easy csr and self sign certificates.
  <csr_config>           Path to file that specifies CSR information.
 ```
 
-## CSR Config
-CSR config is enclosed in the project with predefined answers, Feel free to change as per your requirements.
-
 ## Install
 ```
 git clone https://gitlab.cee.redhat.com/savsingh/gencert.git
 ```
+## CSR Config
+CSR config is enclosed in the project with predefined answers.
+Consider changing `config` file as per your requirements before generating cert.
 
 ## Example
 #### Generate CSR and Key
