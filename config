@@ -1,0 +1,21 @@
+[ req ]
+distinguished_name="req_distinguished_name"
+prompt="no"
+
+[ req_distinguished_name ]
+C="US"
+ST="North Carolina"
+L="Raleigh"
+O="Red Hat, Inc."
+CN="savsingh.usersys.redhat.com"
+
+[ v3_req ]
+
+basicConstraints = CA:FALSE
+keyUsage = nonRepudiation, digitalSignature, keyEncipherment
+subjectAltName = @alt_names
+
+[alt_names]
+DNS.1 = savsingh.usersys.redhat.com
+DNS.2 = www.savsingh.usersys.redhat.com
+DNS.3 = dev.savsingh.usersys.redhat.com
