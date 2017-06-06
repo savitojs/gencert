@@ -1,3 +1,6 @@
+# CSR configuration format:
+# Example is available in the project for SAN (Subject Alternative Names)
+
 [ req ]
 distinguished_name="req_distinguished_name"
 prompt="no"

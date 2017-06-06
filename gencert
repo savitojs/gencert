@@ -12,35 +12,8 @@ This script is used to generate key and CSR and self sign certificates.\n
 -h                      Show this help\n
 -s, --selfsign  Generate self-signed certificate in addition to key and CSR.\n
 <fqdn>          Output files will be named as <fqdn>.key and <fqdn>.csr.\n
-<csr_config>            Path to file that specifies CSR information. See below.\n
+<csr_config>            Path to file that specifies CSR information. Example config file available in project.\n
 \n
-CSR configuration format:\n
-Example is available in the project for SAN (Subject Alternative Names)\n
-\n
-#+#+#+#+#+# config +#+#+#+#+#+#+#+#\n
-[ req ]\n
-distinguished_name="req_distinguished_name"\n
-prompt="no"\n
-\n
-[ req_distinguished_name ]\n
-C="US"\n
-ST="NorthCarolina"\n
-L="Raleigh"\n
-O="RedHat,Inc."\n
-CN="www.company.net" # This name has to be present in DNS.1\n
-\n
-[ v3_req ]\n
-Extensions to add to a certificate request\n
-\n
-basicConstraints = CA:FALSE\n
-keyUsage = nonRepudiation, digitalSignature, keyEncipherment\n
-subjectAltName = @alt_names\n
-\n
-[alt_names]\n
-DNS.1 = www.company.net\n
-DNS.2 = company.com\n
-DNS.3 = company.net\n
-#+#+#+#+#+#+#+#+#+#+#+#+#+#
 "
 if [[ $# -lt 2 ]]; then
    echo -e $usage
@@ -55,6 +28,11 @@ fi
 
 FQDN=$1
 CONFIG=$2
+
+if [[ -z $FQDN ]]; then
+   echo "FQDN/Name can not be of zero length"
+   exit 2
+fi
 
 openssl req -config $CONFIG -new -sha512 -newkey rsa:4096 -nodes -keyout ${FQDN}.key -out ${FQDN}.csr -reqexts v3_req
 
